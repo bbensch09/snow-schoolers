@@ -1,5 +1,10 @@
 class LessonMailer < ActionMailer::Base
-  default from: 'snowschoolers@gmail.com'
+  default from: 'brian@skischool.co'
+
+  def new_user_signed_up(user)
+    @user = user
+    mail(to: 'info@skischool.co', subject: "A new user has signed up for Ski School")
+  end
 
   def send_lesson_request_to_instructors(lesson, excluded_instructor=nil)
     @lesson = lesson
@@ -26,8 +31,8 @@ class LessonMailer < ActionMailer::Base
 
   def inform_requester_of_instructor_cancellation(lesson, available_instructors)
     @lesson = lesson
-    @available_instructors = available_instructors    
-    mail(to: @lesson.requester.email, subject: 'Changes to your upcoming Snow Schoolers lesson')    
+    @available_instructors = available_instructors
+    mail(to: @lesson.requester.email, subject: 'Changes to your upcoming Snow Schoolers lesson')
   end
 
   def send_payment_email_to_requester(lesson)
