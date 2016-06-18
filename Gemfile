@@ -5,9 +5,9 @@ gem 'rails', '4.0.2'
 
 # Use mysql2 as the database for Active Record
 group :development, :test do
-  gem 'mysql2'
   gem 'debugger'
   gem 'pry-debugger'
+  gem 'hirb'
 end
 
 # Use SCSS for stylesheets
